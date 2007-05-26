@@ -1,7 +1,7 @@
 Summary:	Gecko Media Player - browser plugin
 Name:		gecko-mediaplayer
 Version:	0.0.6
-Release:	0.3
+Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dekorte.homeip.net/download/gecko-mediaplayer/%{name}-%{version}.tar.gz
