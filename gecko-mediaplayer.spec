@@ -1,4 +1,5 @@
 Summary:	Gecko Media Player - browser plugin
+Summary(pl.UTF-8):	Gecko Media Player - wtyczka dla przeglądarek
 Name:		gecko-mediaplayer
 Version:	0.0.6
 Release:	1
@@ -26,6 +27,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Gecko Media Player is a browser plugin that uses GNOME MPlayer to play
 media in a browser.
+
+%description -l pl.UTF-8
+Gecko Media Player to wtyczka dla przeglądarek wykorzystująca GNOME
+MPlayera do otwarzania multimediów w przeglądarce.
 
 %prep
 %setup -q
