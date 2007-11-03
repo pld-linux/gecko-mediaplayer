@@ -1,12 +1,12 @@
 Summary:	Gecko Media Player - browser plugin
 Summary(pl.UTF-8):	Gecko Media Player - wtyczka dla przeglądarek
 Name:		gecko-mediaplayer
-Version:	0.5.1
+Version:	0.5.2
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://dekorte.homeip.net/download/gecko-mediaplayer/%{name}-%{version}.tar.gz
-# Source0-md5:	9eb01a49451388831e4868d395288aed
+# Source0-md5:	da57304e4adfedbbc440d175650308a8
 URL:		http://dekorte.homeip.net/download/gecko-mediaplayer/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -19,7 +19,7 @@ BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXt-devel
 BuildRequires:	xulrunner-devel
-Requires:	gnome-mplayer >= 0.5.1
+Requires:	gnome-mplayer >= 0.5.2
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -48,6 +48,8 @@ rm -rf $RPM_BUILD_ROOT
 	xptdir=%{_browserpluginsdir} \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -59,8 +61,9 @@ if [ "$1" = 0 ]; then
 	%update_browser_plugins
 fi
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
 %attr(755,root,root) %{_browserpluginsdir}/*.so
 %{_browserpluginsdir}/*.xpt
+%{_sysconfdir}/gconf/schemas/*.*
