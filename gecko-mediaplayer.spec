@@ -19,6 +19,7 @@ BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	xorg-lib-libXpm-devel
 BuildRequires:	xorg-lib-libXt-devel
 BuildRequires:	xulrunner-devel
+Requires(post,preun):	GConf2
 Requires:	gnome-mplayer >= 0.5.2
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
@@ -54,7 +55,11 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%gconf_schema_install gecko-mediaplayer.schemas
 %update_browser_plugins
+
+%preun
+%gconf_schema_uninstall gecko-mediaplayer.schemas
 
 %postun
 if [ "$1" = 0 ]; then
@@ -64,6 +69,6 @@ fi
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
-%attr(755,root,root) %{_browserpluginsdir}/*.so
-%{_browserpluginsdir}/*.xpt
-%{_sysconfdir}/gconf/schemas/*.*
+%attr(755,root,root) %{_browserpluginsdir}/gecko-mediaplayer*.so
+%{_browserpluginsdir}/gecko-mediaplayer*.xpt
+%{_sysconfdir}/gconf/schemas/gecko-mediaplayer.schemas
