@@ -1,12 +1,12 @@
 Summary:	Gecko Media Player - browser plugin
 Summary(pl.UTF-8):	Gecko Media Player - wtyczka dla przeglądarek
 Name:		gecko-mediaplayer
-Version:	0.6.3
+Version:	0.7.0
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gecko-mediaplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	1eb3825412d05520e4f5bd559f0d38f7
+# Source0-md5:	813073c93ff61c002d7ef13a66640f88
 URL:		http://kdekorte.googlepages.com/gecko-mediaplayer
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
