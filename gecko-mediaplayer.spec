@@ -69,5 +69,4 @@ fi
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog
 %attr(755,root,root) %{_browserpluginsdir}/gecko-mediaplayer*.so
-%{_browserpluginsdir}/gecko-mediaplayer*.xpt
 %{_sysconfdir}/gconf/schemas/gecko-mediaplayer.schemas
