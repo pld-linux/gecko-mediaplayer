@@ -1,0 +1,92 @@
+--- gnome-mplayer-0.9.6/src/libgmlib/Makefile.am~	2009-05-18 15:04:21.000000000 +0200
++++ gnome-mplayer-0.9.6/src/libgmlib/Makefile.am	2009-06-20 21:38:16.233478837 +0200
+@@ -20,5 +20,7 @@
+ 	$(GLIB_LDFLAGS) \
+ 	$(GCONF_LDFLAGS)
+ 
++libgmlib_la_LIBADD = \
++	$(GLIB_LIBS) $(GCONF_LIBS)
+ 
+  
+diff -ur gecko-mediaplayer-0.9.6.org/src/Makefile.am gecko-mediaplayer-0.9.6/src/Makefile.am
+--- gecko-mediaplayer-0.9.6.org/src/Makefile.am	2009-03-23 17:41:15.000000000 +0100
++++ gecko-mediaplayer-0.9.6/src/Makefile.am	2009-06-23 13:47:34.000000000 +0200
+@@ -40,52 +40,52 @@
+ 	npupp.h
+ 
+ install_libexecdir = $(libdir)/mozilla/plugins
+-install_libexec_PROGRAMS = \
+-	gecko-mediaplayer.so \
+-	gecko-mediaplayer-qt.so \
+-	gecko-mediaplayer-wmp.so \
+-	gecko-mediaplayer-rm.so \
+-	gecko-mediaplayer-dvx.so
++install_libexec_LTLIBRARIES = \
++	gecko-mediaplayer.la \
++	gecko-mediaplayer-qt.la \
++	gecko-mediaplayer-wmp.la \
++	gecko-mediaplayer-rm.la \
++	gecko-mediaplayer-dvx.la
+ 	
+-gecko_mediaplayer_so_SOURCES = \
++gecko_mediaplayer_la_SOURCES = \
+ 	plugin_types_std.cpp \
+ 	$(COMMONCODE)
+ 		
+-gecko_mediaplayer_so_CFLAGS = -fPIC 
+-gecko_mediaplayer_so_LDFLAGS = -shared $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS) -fPIC
+-gecko_mediaplayer_so_LDADD = libgmlib/libgmlib.la
++gecko_mediaplayer_la_CFLAGS = -fPIC 
++gecko_mediaplayer_la_LDFLAGS = -module -avoid-version -fPIC
++gecko_mediaplayer_la_LIBADD = libgmlib/libgmlib.la $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS)
+ 
+-gecko_mediaplayer_qt_so_SOURCES = \
++gecko_mediaplayer_qt_la_SOURCES = \
+ 	plugin_types_qt.cpp \
+ 	$(COMMONCODE)
+ 	
+-gecko_mediaplayer_qt_so_CFLAGS = -fPIC 
+-gecko_mediaplayer_qt_so_LDFLAGS = -shared $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS) -fPIC 
+-gecko_mediaplayer_qt_so_LDADD = libgmlib/libgmlib.la
++gecko_mediaplayer_qt_la_CFLAGS = -fPIC 
++gecko_mediaplayer_qt_la_LDFLAGS = -module -avoid-version -fPIC 
++gecko_mediaplayer_qt_la_LIBADD = libgmlib/libgmlib.la $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS)
+ 
+-gecko_mediaplayer_wmp_so_SOURCES = \
++gecko_mediaplayer_wmp_la_SOURCES = \
+ 	plugin_types_wmp.cpp \
+ 	$(COMMONCODE)
+ 	
+-gecko_mediaplayer_wmp_so_CFLAGS = -fPIC 
+-gecko_mediaplayer_wmp_so_LDFLAGS = -shared $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS) -fPIC 
+-gecko_mediaplayer_wmp_so_LDADD = libgmlib/libgmlib.la
++gecko_mediaplayer_wmp_la_CFLAGS = -fPIC 
++gecko_mediaplayer_wmp_la_LDFLAGS = -module -avoid-version -fPIC 
++gecko_mediaplayer_wmp_la_LIBADD = libgmlib/libgmlib.la $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS)
+ 
+-gecko_mediaplayer_dvx_so_SOURCES = \
++gecko_mediaplayer_dvx_la_SOURCES = \
+ 	plugin_types_dvx.cpp \
+ 	$(COMMONCODE)
+ 	
+-gecko_mediaplayer_dvx_so_CFLAGS = -fPIC 
+-gecko_mediaplayer_dvx_so_LDFLAGS = -shared $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS) -fPIC
+-gecko_mediaplayer_dvx_so_LDADD = libgmlib/libgmlib.la
++gecko_mediaplayer_dvx_la_CFLAGS = -fPIC 
++gecko_mediaplayer_dvx_la_LDFLAGS = -module -avoid-version -fPIC
++gecko_mediaplayer_dvx_la_LIBADD = libgmlib/libgmlib.la $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS)
+ 
+-gecko_mediaplayer_rm_so_SOURCES = \
++gecko_mediaplayer_rm_la_SOURCES = \
+ 	plugin_types_rm.cpp \
+ 	$(COMMONCODE)
+ 	
+-gecko_mediaplayer_rm_so_CFLAGS = -fPIC 
+-gecko_mediaplayer_rm_so_LDFLAGS = -shared $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS) -fPIC
+-gecko_mediaplayer_rm_so_LDADD = libgmlib/libgmlib.la
++gecko_mediaplayer_rm_la_CFLAGS = -fPIC 
++gecko_mediaplayer_rm_la_LDFLAGS = -module -avoid-version -fPIC
++gecko_mediaplayer_rm_la_LIBADD = libgmlib/libgmlib.la $(GLIB_LIBS) $(DBUS_LIBS) $(GCONF_LIBS)
+ 
+ indent:
+ 	indent -kr -l100 -i4 -nut *.cpp
