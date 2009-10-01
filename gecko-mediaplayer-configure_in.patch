@@ -1,0 +1,13 @@
+--- gecko-mediaplayer-0.9.6/configure.in.org	2009-10-01 21:27:20.136025171 +0200
++++ gecko-mediaplayer-0.9.6/configure.in	2009-10-01 21:33:21.545349927 +0200
+@@ -40,7 +40,9 @@
+         [])
+ 
+ if test "$GECKO_CFLAGS" = ""; then
+-PKG_CHECK_MODULES(GECKO, [mozilla-plugin mozilla-xpcom],[
++PKG_CHECK_MODULES(GECKO, [mozilla-plugin],[
++        GECKO_CFLAGS=`$PKG_CONFIG --cflags mozilla-plugin`
++        GECKO_LIBS=`$PKG_CONFIG --libs mozilla-plugin`
+     ],[AC_MSG_WARN([mozilla-plugin not found, trying another])])
+ fi
+ 

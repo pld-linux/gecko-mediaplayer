@@ -1,0 +1,12 @@
+Fixes: "undefined symbol: NPP_GetJavaClass" error.
+--- gecko-mediaplayer-0.9.8/src/np_entry.cpp.org	2009-10-01 21:45:45.526566754 +0200
++++ gecko-mediaplayer-0.9.8/src/np_entry.cpp	2009-10-01 21:46:03.568895013 +0200
+@@ -170,7 +170,7 @@
+     pluginFuncs->urlnotify = NewNPP_URLNotifyProc(NPP_URLNotify);
+     pluginFuncs->event = NULL;
+     pluginFuncs->getvalue = NewNPP_GetValueProc(NPP_GetValue);
+-#ifdef OJI
++#if 0
+     pluginFuncs->javaClass = NPP_GetJavaClass();
+ #endif
+ 
