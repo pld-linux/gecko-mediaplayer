@@ -10,6 +10,8 @@ Source0:	http://gecko-mediaplayer.googlecode.com/files/%{name}-%{version}.tar.gz
 Patch0:		%{name}-runtime.patch
 Patch1:		%{name}-configure_in.patch
 URL:		http://kdekorte.googlepages.com/gecko-mediaplayer
+BuildRequires:	GConf2
+BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	dbus-devel
