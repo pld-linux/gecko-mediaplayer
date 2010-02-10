@@ -17,17 +17,15 @@ BuildRequires:	automake
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel
-BuildRequires:	libtool
 BuildRequires:	libstdc++-devel
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.357
-BuildRequires:	xorg-lib-libXpm-devel
-BuildRequires:	xorg-lib-libXt-devel
 BuildRequires:	xulrunner-devel >= 1.8.1.12-1.20080208.3
 Requires(post,preun):	GConf2
-Requires:	gnome-mplayer >= 0.9.5
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
+Requires:	gnome-mplayer >= 0.9.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
