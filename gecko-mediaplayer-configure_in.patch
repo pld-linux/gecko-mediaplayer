@@ -6,8 +6,8 @@
  if test "$GECKO_CFLAGS" = ""; then
 -PKG_CHECK_MODULES(GECKO, [mozilla-plugin mozilla-xpcom],[
 +PKG_CHECK_MODULES(GECKO, [mozilla-plugin],[
-+        GECKO_CFLAGS=`$PKG_CONFIG --cflags mozilla-plugin`
-+        GECKO_LIBS=`$PKG_CONFIG --libs mozilla-plugin`
++        GECKO_CFLAGS=`$PKG_CONFIG --cflags mozilla-plugin nspr`
++        GECKO_LIBS=`$PKG_CONFIG --libs mozilla-plugin nspr`
      ],[AC_MSG_WARN([mozilla-plugin not found, trying another])])
  fi
  
