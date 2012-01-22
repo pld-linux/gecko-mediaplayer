@@ -1,14 +1,13 @@
 Summary:	Gecko Media Player - browser plugin
 Summary(pl.UTF-8):	Gecko Media Player - wtyczka dla przeglądarek
 Name:		gecko-mediaplayer
-Version:	0.9.9
+Version:	1.0.5
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gecko-mediaplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	1833c83ee2bb226914aa078165d04ddd
+# Source0-md5:	1a96daf878d06452c0fd9a13fd186021
 Patch0:		%{name}-runtime.patch
-Patch1:		%{name}-configure_in.patch
 URL:		http://kdekorte.googlepages.com/gecko-mediaplayer
 BuildRequires:	GConf2
 BuildRequires:	GConf2-devel
@@ -16,16 +15,16 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-devel
+BuildRequires:	gmtk-devel >= 1.0.5
 BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	xulrunner-devel >= 1.8.1.12-1.20080208.3
-Requires(post,preun):	GConf2
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
-Requires:	gnome-mplayer >= 0.9.5
+Requires:	gnome-mplayer >= 1.0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,10 +38,6 @@ MPlayera do otwarzania multimediów w przeglądarce.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-
-# remove with new upstream version (should have this fixed)
-sed -i -e 's#utf8characters#UTF8Characters#g' src/plugin.cpp
 
 %build
 %{__libtoolize}
@@ -59,6 +54,9 @@ rm -rf $RPM_BUILD_ROOT
 	install_libexecdir=%{_browserpluginsdir} \
 	xptdir=%{_browserpluginsdir} \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+install %{name}.schemas $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
 
 %find_lang %{name}
 
