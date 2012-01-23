@@ -49,14 +49,15 @@ MPlayera do otwarzania multimediów w przeglądarce.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	install_libexecdir=%{_browserpluginsdir} \
 	xptdir=%{_browserpluginsdir} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
-install %{name}.schemas $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+cp -p %{name}.schemas $RPM_BUILD_ROOT%{_sysconfdir}/gconf/schemas
+
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %find_lang %{name}
 
@@ -78,5 +79,5 @@ fi
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog DOCS/tech/javascript.txt
-%attr(755,root,root) %{_browserpluginsdir}/gecko-mediaplayer*.so
 %{_sysconfdir}/gconf/schemas/gecko-mediaplayer.schemas
+%attr(755,root,root) %{_browserpluginsdir}/gecko-mediaplayer*.so
