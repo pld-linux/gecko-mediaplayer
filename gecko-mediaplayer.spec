@@ -1,12 +1,12 @@
 Summary:	Gecko Media Player - browser plugin
 Summary(pl.UTF-8):	Gecko Media Player - wtyczka dla przeglądarek
 Name:		gecko-mediaplayer
-Version:	1.0.5
+Version:	1.0.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gecko-mediaplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	1a96daf878d06452c0fd9a13fd186021
+# Source0-md5:	d35e3307126f874afba93bd896d605dc
 Patch0:		%{name}-runtime.patch
 URL:		http://kdekorte.googlepages.com/gecko-mediaplayer
 BuildRequires:	GConf2
@@ -15,7 +15,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gmtk-devel >= 1.0.5
+BuildRequires:	gmtk-devel >= 1.0.7
 BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
