@@ -1,12 +1,12 @@
 Summary:	Gecko Media Player - browser plugin
 Summary(pl.UTF-8):	Gecko Media Player - wtyczka dla przeglądarek
 Name:		gecko-mediaplayer
-Version:	1.0.7
+Version:	1.0.8
 Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://gecko-mediaplayer.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	d35e3307126f874afba93bd896d605dc
+# Source0-md5:	d13303664fcbb7f3b1273be4b1aa1b1e
 Patch0:		%{name}-runtime.patch
 URL:		http://kdekorte.googlepages.com/gecko-mediaplayer
 BuildRequires:	GConf2
@@ -15,7 +15,7 @@ BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-devel
-BuildRequires:	gmtk-devel >= 1.0.7
+BuildRequires:	gmtk-devel >= 1.0.8
 BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
@@ -24,7 +24,7 @@ BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	xulrunner-devel >= 1.8.1.12-1.20080208.3
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
-Requires:	gnome-mplayer >= 1.0.5
+Requires:	gnome-mplayer >= 1.0.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,6 +38,8 @@ MPlayera do otwarzania multimediów w przeglądarce.
 %prep
 %setup -q
 %patch0 -p1
+%{__sed} -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.in
+%{__sed} -i 's/AM_PROG_CC_STDC/AC_PROG_CC/g' configure.in
 
 %build
 %{__libtoolize}
