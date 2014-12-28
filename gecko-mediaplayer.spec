@@ -14,7 +14,7 @@ BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	dbus-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gmtk-devel >= 1.0.8
 BuildRequires:	gtk+2-devel
 BuildRequires:	libstdc++-devel
