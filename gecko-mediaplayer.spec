@@ -37,7 +37,7 @@ MPlayera do otwarzania multimediów w przeglądarce.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 %{__sed} -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.in
 %{__sed} -i 's/AM_PROG_CC_STDC/AC_PROG_CC/g' configure.in
 
